@@ -1,3 +1,3 @@
-module github.com/SisyphianLiger/Go_Pokedex.git
+module github.com/SisyphianLiger/Go_Pokedex
 
 go 1.20
