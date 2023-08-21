@@ -7,7 +7,7 @@ import (
     "strings"
 )
 
-func startRepl() {
+func startRepl(cfg * config) {
 
     scanner :=  bufio.NewScanner(os.Stdin)
     for {
@@ -31,13 +31,17 @@ func startRepl() {
             fmt.Println("Invalid Command")
             continue
         }
-        command.callback()
+        
+        // command.callback()
+        
         switch command.name {
         case "help":
             callbackHelp()
         case "exit":
             callbackExit()
-            default: 
+        case "map":
+            callbackMap() 
+        default: 
             fmt.Println("Invalid Command")
         }
 
@@ -62,6 +66,11 @@ func getCommands() map[string]cliCommand {
             name: "exit",
             description: "Stops the Pokedex CLI",
             callback: callbackExit, 
+        },
+        "map": {
+            name: "map",
+            description: "Shows Details of Pokemon Locations",
+            callback: callbackMap, 
         },
     }
 }
