@@ -2,7 +2,7 @@ package pokeapi
 
 type Poke_Mapper struct {
     Count       int          `json:"count"`
-    Next_20     *string      `json:"name"`
+    Next        *string      `json:"next"`
     Previous    *string      `json:"previous"`
     Results     []struct {
         Name    string      `json:"name"`

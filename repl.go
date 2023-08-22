@@ -32,27 +32,15 @@ func startRepl(cfg * config) {
             continue
         }
         
-        // command.callback()
+        command.callback(cfg)
         
-        switch command.name {
-        case "help":
-            callbackHelp()
-        case "exit":
-            callbackExit()
-        case "map":
-            callbackMap() 
-        default: 
-            fmt.Println("Invalid Command")
-        }
-
-
     }
 }
 
 type cliCommand struct {
     name string 
     description string 
-    callback func() error
+    callback func(* config) error
 }
 
 func getCommands() map[string]cliCommand {

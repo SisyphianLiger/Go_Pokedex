@@ -1,24 +1,24 @@
 package main
 
 import (
-    "fmt"
-    "log"
-
-	"github.com/SisyphianLiger/Go_Pokedex/internal_pck/pokeapi"
+	"fmt"
+	"log"
 )
 
+func callbackMap(cfg * config) error {
 
-func callbackMap() error {
-	pokeapiClient := pokeapi.NewClient()
-
-	resp, err := pokeapiClient.ListLocationAreas()
+    resp, err := cfg.pokeapiClient.ListLocationAreas(cfg.nextLocationAreaURL)
 	if err != nil {
 		log.Fatal(err)
 	}
+    fmt.Println("%v", cfg.pokeapiClient)
+    fmt.Println("%v", resp)
 	// Make it Pretty Output
 	fmt.Print("Location Areas: \n")
 	for _, area := range resp.Results {
-		fmt.Printf(" - %s\n", area.Name)
+		fmt.Printf(" - %s\n", area.Name) 
 	}
+    cfg.nextLocationAreaURL = resp.Next
+    cfg.prevLocationAreaURL = resp.Previous
     return nil
 }
