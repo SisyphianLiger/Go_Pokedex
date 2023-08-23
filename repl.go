@@ -45,20 +45,25 @@ type cliCommand struct {
 
 func getCommands() map[string]cliCommand {
     return map[string]cliCommand {
-        "help": {
+        "h": {
             name: "help",
             description: "Display all Options found in the Help Menu",
             callback: callbackHelp,
         },
-        "exit": {
+        "q": {
             name: "exit",
             description: "Stops the Pokedex CLI",
             callback: callbackExit, 
         },
-        "map": {
+        "m": {
             name: "map",
             description: "Shows Details of Pokemon Locations",
             callback: callbackMap, 
+        },
+        "mb": {
+            name: "map",
+            description: "Shows Details of Pokemon Locations",
+            callback: callbackMb,
         },
     }
 }
