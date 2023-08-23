@@ -1,11 +1,13 @@
 package pokecache
 
-
-import "testing"
+import (
+	"testing"
+	"time"
+)
 
 
 func TestCreateCache( t *testing.T) {
-    cache := NewCache() 
+    cache := NewCache(time.Millisecond * 10) 
     if cache.cache == nil {
         t.Error("cache is nil")
     }
@@ -15,7 +17,7 @@ func TestCreateCache( t *testing.T) {
 
 
 func TestAddCache( t *testing.T) {
-    cache := NewCache() 
+    cache := NewCache(time.Millisecond* 10) 
 
     cases := []struct {
         inputKey string 
@@ -51,4 +53,17 @@ func TestAddCache( t *testing.T) {
     }
 }
 
+func testPluckLoop(t *testing.T) {
+    interval := time.Millisecond * 10
+    cache := NewCache(interval)
 
+    keyOne := "key1"
+    cache.Add(keyOne, []byte("val1"))
+
+    time.Sleep(interval + time.Millisecond)
+
+    _, ok := cache.Get(keyOne)
+    if ok {
+        t.Errorf("%s is not removed", keyOne)
+    }
+}

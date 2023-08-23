@@ -14,6 +14,7 @@ func (c *Client) ListLocationAreas(pageURL *string) (Poke_Mapper, error) {
     if pageURL != nil {
         fullURL = *pageURL
     }
+     
 
     request, error := http.NewRequest("GET", fullURL, nil)
 

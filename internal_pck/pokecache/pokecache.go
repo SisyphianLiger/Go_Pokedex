@@ -12,11 +12,13 @@ type cacheEntry struct {
 }
 
 // new cache creator 
-
-func NewCache() Cache {
-    return Cache{
+// Also sets up cache referesh
+func NewCache(interval time.Duration) Cache {
+    c := Cache{
         cache: make(map[string]cacheEntry),
     }
+    go c.pluckLoop(interval)
+    return c
 }
 
 func (c *Cache) Add(key string, val []byte) {
