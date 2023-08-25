@@ -75,7 +75,7 @@ func getCommands() map[string]cliCommand {
             callback: callbackMap, 
         },
         "p": {
-            name: "Pokedex",
+            name: "pokedex",
             description: "Shows all names of captured pokemon",
             callback: callbackPokedex, 
         },
@@ -88,6 +88,11 @@ func getCommands() map[string]cliCommand {
             name: "map back",
             description: "Shows Details of Pokemon Locations",
             callback: callbackMb,
+        },
+        "r": {
+            name: "relase",
+            description: "relases captured pokemon",
+            callback: callbackRelease,
         },
     }
 }
