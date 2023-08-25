@@ -12,8 +12,8 @@ const baseURL = "https://pokeapi.co/api/v2"
 
 
 type Client struct {
-    cache pokecache.Cache
     httpClient http.Client 
+    cache pokecache.Cache
 }
 
 
