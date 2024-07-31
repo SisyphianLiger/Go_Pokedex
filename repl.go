@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func repl() {
+func run_repl() {
 	scanner := bufio.NewScanner(os.Stdin)
 
 	for {
@@ -28,7 +28,11 @@ func repl() {
 			}
 			continue
 		} else {
-			fmt.Println("Unknown command")
+			err := cli_cmd.CommandHelp()
+			if err != nil {
+				fmt.Println("Problem with the Program, Closing now")
+				cli_cmd.CommandQuit()
+			}
 		}
 	}
 }

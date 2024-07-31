@@ -13,9 +13,9 @@ func GetCommands() map[string]CliCommand {
 			Description: "Displays a help message",
 			Callback:    CommandHelp,
 		},
-		"exit": {
-			Name:        "exit",
-			Description: "Exit the Pokedex",
+		"quit": {
+			Name:        "quit",
+			Description: "Quit the Pokedex",
 			Callback:    CommandQuit,
 		},
 	}
