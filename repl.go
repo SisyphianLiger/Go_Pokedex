@@ -31,7 +31,10 @@ func run_repl() {
 			err := cli_cmd.CommandHelp()
 			if err != nil {
 				fmt.Println("Problem with the Program, Closing now")
-				cli_cmd.CommandQuit()
+				err := cli_cmd.CommandQuit()
+				if err != nil {
+					os.Exit(0)
+				}
 			}
 		}
 	}
